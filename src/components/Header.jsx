@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Button from "./Button"
+import { IoLogInOutline } from "react-icons/io5";
 import { useNavigate, useLocation } from "react-router"
 
 const Header = () => {
@@ -34,14 +35,19 @@ const Header = () => {
     } else if (currentlyLoggedInUser) {
       return `Logout ${currentlyLoggedInUser}`;
     } else {
-      return "Login";
+      return (
+        <span className="flex items-end gap-2">
+          Login
+          <IoLogInOutline size={24} />
+        </span>
+      );
     }
   }
 
   return (
     <header className="flex fixed top-0 left-0 right-0 justify-between items-center h-[100px] z-50 bg-white text-black px-8">
-      <h1 className="text-4xl font-bold">atlys</h1>
-      <Button className="bg-transparent border-0" onClick={onButtonClick}>{getButtonLabel()}</Button>
+      <h1 className="text-4xl font-extrabold">atlys</h1>
+      <Button className="bg-transparent border-0 font-bold" onClick={onButtonClick}>{getButtonLabel()}</Button>
     </header>
   )
 }

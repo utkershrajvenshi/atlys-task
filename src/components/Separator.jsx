@@ -1,10 +1,11 @@
 import React from "react";
 import { mergeClasses } from "../utils";
 
-const Separator = ({ className }) => {
+const Separator = ({ className, orientation = "horizontal" }) => {
   return (
     <div className={mergeClasses([
-      "h-[1px] bg-gray-200",
+      "bg-gray-200",
+      orientation === "vertical" ? "w-[1px]" : "h-[1px]",
       className,
     ])}></div>
   );

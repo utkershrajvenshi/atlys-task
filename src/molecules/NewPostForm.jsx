@@ -1,15 +1,19 @@
 import React from "react";
 import CompositeTextInput from "../components/CompositeTextInput";
 import PostActions from "./PostActions";
+import { IoMdSend } from "react-icons/io";
 import Separator from "../components/Separator";
-import { mergeClasses } from "../utils";
+import { mergeClasses, iconButtonBaseStyle } from "../utils";
 import Button from "../components/Button";
 
 const NewPostForm = ({ className, onSubmit }) => {
   const [content, setContent] = React.useState("");
 
   const onClickSubmit = () => {
-    onSubmit(content);
+    if(content.trim().length) {
+      onSubmit(content);
+    }
+
     setContent("");
   };
 
@@ -22,8 +26,13 @@ const NewPostForm = ({ className, onSubmit }) => {
       <CompositeTextInput placeholder="Write a post" isEditing content={content} onTextChange={(text) => setContent(text)}/>
       <Separator className="w-full" />
       <div className="flex justify-between">
-        <PostActions />
-        <Button onClick={onClickSubmit}>Post</Button>
+        <PostActions isNewPost />
+        <Button onClick={onClickSubmit} className={mergeClasses([
+          iconButtonBaseStyle,
+          "text-blue-800",
+        ])}>
+          <IoMdSend size={24} />
+        </Button>
       </div>
     </div>
     </div>
