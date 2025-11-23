@@ -1,16 +1,26 @@
-# React + Vite
+# Atlys take-home task for frontend developer position
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Built with React and Vite with JavaScript
+- Uses tailwind
+- Uses `react-icons` for showing icons
+- Follows clear separation of concerns and atomic-molecular design methodology
 
-Currently, two official plugins are available:
+## Core Insights while designing code architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img width="1475" height="827" alt="Screenshot from 2025-11-23 18-33-41" src="https://github.com/user-attachments/assets/cd265e5d-a350-4e07-b3c8-18a7008f398a" />
 
-## React Compiler
+## Implementation trade-offs
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Instantiated with following test credentials when application loads
 
-## Expanding the ESLint configuration
+| email | password |
+| :--- | :--- |
+| demo@example.com | password123 |
+| test@user.com | testpass |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `AuthContext` handles authentication-related data for the entire flow
+- Uses `sessionStorage` to store `currentUser` data and persist session within same browser tab. Resets on browser refresh
+- Signing up as a new user won't update default credentials map, will only set `currentUser` to `sessionStorage`
+- Clicking Send post trims post content and if still valid, adds it to `userFeed` state variable directly
+
+*Production build deployed to https://atlys-task-one.vercel.app/*
